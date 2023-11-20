@@ -1,17 +1,5 @@
 <h1>新增商品</h1>
 
-/RESOURCE/new -> /RESOURCE/create
-
-HTTP Verb 動詞
-GET/POST/PATCH/PUT/DELETE
-
-RESTful API
-  GET RESOURCE 讀取 R
-  POST RESOURCE 新增 C
-  PATCH RESOURCE 更新 U
-  PUT RESOURCE 更新 U
-  DELETE RESOURCE 刪除 D
-
 <form action="/products"
       method="post"
       data-turbo="false">
@@ -22,17 +10,17 @@ RESTful API
 
   <div>
     <label for="title">Title</label>
-    <input name="title" type="text" id="title" class="border-2 border-black">
+    <input name="product[title]" type="text" id="title" class="border-2 border-black">
   </div>
 
   <div>
     <label for="description">Description</label>
-    <textarea name="description" id="description" class="border-2 border-black"></textarea>
+    <textarea name="product[description]" id="description" class="border-2 border-black"></textarea>
   </div>
 
   <div>
     <label for="price">Price</label>
-    <input name="price" type="number" id="price" min="0" class="border-2 border-black">
+    <input name="product[price]" type="number" id="price" min="0" class="border-2 border-black">
   </div>
 
   <button class="bg-red-300">新增</button>
