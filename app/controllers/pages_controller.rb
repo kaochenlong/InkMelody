@@ -5,4 +5,7 @@ class PagesController < ApplicationController
     @numbers = (1..42).to_a.sample(5)
   end
 
+  def privacy
+  end
+
 end
