@@ -1,5 +1,15 @@
 <h1>新增商品</h1>
 
+<% if @product.errors.any? %>
+  <section class="p-4 my-4 text-white bg-rose-600">
+    <ul>
+    <% @product.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </section>
+<% end %>
+
 <%= form_with model: @product,
               data: { turbo: false } do |form| %>
 

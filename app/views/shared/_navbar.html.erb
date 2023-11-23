@@ -1,0 +1,18 @@
+<nav
+  class="flex items-center justify-between px-3 py-2 text-white bg-slate-800"
+>
+  <div class="flex items-center gap-2">
+    <h1 class="text-2xl font-bold"><%= link_to "墨韻坊",root_path %></h1>
+    <ul class="flex gap-3">
+      <li><%= link_to "商品列表", products_path %></li>
+      <li><%= link_to "關於", about_path %></li>
+      <li><%= link_to "隱私權", privacy_path %></li>
+    </ul>
+  </div>
+  <div>
+    <ul class="flex gap-3">
+      <li>註冊</li>
+      <li>登入</li>
+    </ul>
+  </div>
+</nav>

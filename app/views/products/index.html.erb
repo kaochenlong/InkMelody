@@ -1,0 +1,11 @@
+<h1>商品列表</h1>
+
+<%= link_to '新增商品', new_product_path %>
+
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <%= link_to product.title, product_path(product) %>
+    </li>
+  <% end %>
+</ul>
