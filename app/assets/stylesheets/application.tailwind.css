@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.field_with_errors {
+  display: inline;
+
+  & input[type="text"] {
+    border: 2px solid red;
+  }
+
+  & input[type="number"] {
+    border: 2px solid red;
+  }
+}
