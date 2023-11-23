@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to root_path
+      redirect_to root_path, notice: '新增商品成功!!'
     else
       # 借 app/views/products/new.html.erb
       render :new

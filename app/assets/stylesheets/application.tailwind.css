@@ -13,3 +13,11 @@
     border: 2px solid red;
   }
 }
+
+.flash-alert {
+  @apply px-4 py-2 text-white bg-rose-700;
+}
+
+.flash-notice {
+  @apply px-4 py-2 text-white bg-slate-700;
+}
