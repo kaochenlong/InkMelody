@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @products = Product.all.order(id: :desc)
   end
 
   def show
-    render html: params
+    @product = Product.find(params[:id])
   end
 
   def new

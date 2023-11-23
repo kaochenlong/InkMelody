@@ -1,6 +1,6 @@
-<h1>商品列表</h1>
+<h1 class="text-2xl">商品列表</h1>
 
-<%= link_to '新增商品', new_product_path %>
+<%= link_to '新增商品', new_product_path, class: 'ink-btn' %>
 
 <ul>
   <% @products.each do |product| %>
