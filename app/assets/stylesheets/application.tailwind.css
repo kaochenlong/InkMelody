@@ -23,5 +23,9 @@
 }
 
 .ink-btn {
-  @apply bg-slate-700 px-3 text-white rounded py-2 inline-block;
+  @apply px-3 bg-slate-700  text-white rounded py-2 inline-block;
+}
+
+.ink-btn-danger {
+  @apply bg-rose-700;
 }
