@@ -1,0 +1,33 @@
+<% if product.errors.any? %>
+  <section class="p-4 my-4 text-white bg-rose-600">
+    <ul>
+    <% product.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </section>
+<% end %>
+
+<%= form_with model: product,
+              data: { turbo: false } do |form| %>
+
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'border-2 border-black' %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'border-2 border-black' %>
+  </div>
+
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price, class: 'border-2 border-black', min: 0 %>
+  </div>
+
+  <div>
+    <%= form.submit class: 'bg-rose-700 text-white px-3 py-2' %>
+  </div>
+
+<% end %>
