@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
   # Strong Parameter
   def product_params
     params.require(:product)
-          .permit(:title, :description, :price)
+          .permit(:title, :description, :price, :onsale)
   end
 
   def find_product
