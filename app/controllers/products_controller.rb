@@ -22,6 +22,20 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+
+    if @product.update(product_params)
+      redirect_to product_path(@product), notice: '更新成功'
+    else
+      render :edit
+    end
+  end
+
   # Strong Parameter
   def product_params
     params.require(:product)

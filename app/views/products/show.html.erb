@@ -1,3 +1,5 @@
+<%= link_to '編輯', edit_product_path(@product), class: 'ink-btn' %>
+
 <h1 class="text-2xl"><%= @product.title %></h1>
 <h3>售價：<%= @product.price %>元</h3>
 <p><%= simple_format(@product.description) %></p>
