@@ -19,7 +19,7 @@
 }
 
 .flash-notice {
-  @apply px-4 py-2 text-white bg-slate-700;
+  @apply px-4 py-2 text-black bg-orange-400;
 }
 
 .ink-btn {

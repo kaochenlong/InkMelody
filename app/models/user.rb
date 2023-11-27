@@ -3,7 +3,14 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation: true
 
   before_create :encrypt_password
-  # 2FA 二階段驗證
+
+  def self.login(data)
+    email = data[:email]
+    password = Digest::SHA256.hexdigest("*xx#{data[:password]}yy-")
+
+    # find_by(email: email, password: password)
+    find_by(email:, password:)
+  end
 
   private
 
