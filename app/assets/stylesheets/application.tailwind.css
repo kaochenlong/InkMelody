@@ -29,3 +29,7 @@
 .ink-btn-danger {
   @apply bg-rose-700;
 }
+
+.input-field {
+  @apply border-2 border-black;
+}

@@ -1,0 +1,23 @@
+<h1 class="text-2xl">註冊帳號</h1>
+
+<%= form_with model: @user, data: { turbo: false } do |form| %>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email, class: 'input-field' %>
+  </div>
+
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password, class: 'input-field' %>
+  </div>
+
+  <div>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: 'input-field' %>
+  </div>
+
+  <div>
+    <%= form.submit class: 'ink-btn' %>
+  </div>
+<% end %>

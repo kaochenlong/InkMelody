@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :products
+  resource :users, except: [:destroy]
 
   # get '/products/new', to: 'products#new', as: :new_product
   # post '/products', to: 'products#create'
