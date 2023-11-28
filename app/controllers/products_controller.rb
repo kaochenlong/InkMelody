@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_product, only: [:show]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :find_owned_product, only: [:edit, :update, :destroy]
 
   def index
     @products = Product.order(id: :desc)
@@ -49,5 +50,9 @@ class ProductsController < ApplicationController
 
   def find_product
     @product = Product.find(params[:id])
+  end
+
+  def find_owned_product
+    @product = current_user.products.find(params[:id])
   end
 end
