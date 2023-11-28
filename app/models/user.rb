@@ -14,6 +14,10 @@ class User < ApplicationRecord
     find_by(email:, password:)
   end
 
+  def own?(p)
+    product_ids.include?(p.id)
+  end
+
   private
 
   def encrypt_password
