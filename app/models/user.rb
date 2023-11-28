@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation: true
 
   has_many :products
+  has_many :comments
 
   before_create :encrypt_password
 

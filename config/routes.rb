@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :products
+  resources :products do
+    resources :comments, shallow: true, only: [:create, :destroy]
+  end
 
   resource :users, except: [:destroy] do
     collection do

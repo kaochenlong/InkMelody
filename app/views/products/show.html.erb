@@ -10,3 +10,21 @@
 <h1 class="text-2xl"><%= @product.title %></h1>
 <h3>售價：<%= @product.price %>元</h3>
 <p><%= simple_format(@product.description) %></p>
+
+<section>
+  <h3 class="text-xl">留言</h3>
+
+  <%= form_with(model: [@product, @comment], data: { turbo: false }) do |form| %>
+    <%= form.text_area :content, class: 'input-field' %>
+
+    <div>
+      <%= form.submit '新增留言', class: 'ink-btn' %>
+    </div>
+  <% end %>
+
+  <ul>
+  <% @comments.each do |comment| %>
+    <li><%= comment.content %></li>
+  <% end %>
+  </ul>
+</section>
