@@ -2,6 +2,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, confirmation: true
 
+  has_many :products
+
   before_create :encrypt_password
 
   def self.login(data)
