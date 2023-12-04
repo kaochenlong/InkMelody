@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   before_action :find_owned_product, only: [:edit, :update, :destroy]
 
   def index
-    @products = Product.order(id: :desc)
+    @products = Product.includes(:user).order(id: :desc)
   end
 
   def show
