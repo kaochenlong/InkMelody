@@ -2,9 +2,15 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :comments, shallow: true, only: [:create, :destroy]
+  end
 
-    member do
-      patch :like
+  namespace :api do
+    namespace :v1 do
+      resources :products, only: [] do
+        member do
+          patch :like
+        end
+      end
     end
   end
 

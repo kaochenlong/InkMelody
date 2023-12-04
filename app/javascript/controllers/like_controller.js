@@ -12,7 +12,7 @@ export default class extends Controller {
     const token = document.querySelector("meta[name='csrf-token']").content;
 
     // 打 API
-    const url = `/products/${id}/like`;
+    const url = `/api/v1/products/${id}/like`;
 
     fetch(url, {
       method: "PATCH",

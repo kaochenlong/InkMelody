@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :like]
+  before_action :find_product, only: [:show]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_owned_product, only: [:edit, :update, :destroy]
 
@@ -40,12 +40,6 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     redirect_to root_path, alert: '商品已刪除'
-  end
-
-  def like
-    # ......
-
-    render json: {id: params[:id], status: 'liked'}
   end
 
   private
