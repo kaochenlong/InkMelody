@@ -1,24 +1,7 @@
-# README
+# InkMelody
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup Steps
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- run `bundle install` and `yarn install`
+- run `rails db:setup`
+- run `bin/dev`, and check `http://localhost:3000`
