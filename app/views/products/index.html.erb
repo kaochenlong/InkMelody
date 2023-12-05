@@ -2,11 +2,8 @@
 
 <%= link_to '新增商品', new_product_path, class: 'ink-btn' if user_signed_in? %>
 
-<ul>
+<ul class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
   <% @products.each do |product| %>
-    <li>
-      [<%= product.user.email.split("@").first %>]
-      <%= link_to product.title, product_path(product) %>
-    </li>
+    <%= render 'product', product: %>
   <% end %>
 </ul>

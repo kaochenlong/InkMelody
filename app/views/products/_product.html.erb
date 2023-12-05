@@ -1,0 +1,12 @@
+<li class="p-2 border rounded shadow border-slate-300">
+  <div>
+    <%= link_to product_path(product) do %>
+      <figure>
+        <%= product_cover(product) %>
+      </figure>
+    <% end %>
+    <h2 class="font-bold"><%= link_to product.title, product_path(product) %></h2>
+    <span>NT$ <%= product.price %></span>
+    <p class="text-slate-600"><%= product.description %></p>
+  </div>
+</li>
