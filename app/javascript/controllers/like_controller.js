@@ -21,7 +21,7 @@ export default class extends Controller {
     e.preventDefault();
 
     const { id } = this.element.dataset;
-    const url = `/api/v1/products/${id}/like`;
+    const url = `/api/v1/products/${id}/like.json`;
     const response = await patch(url);
 
     if (response.ok) {
