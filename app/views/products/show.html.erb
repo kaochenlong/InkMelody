@@ -11,7 +11,7 @@
 <h1 class="flex items-center gap-2 text-2xl">
   <%= @product.title %>
 
-  <div data-controller="like" data-id="<%= @product.id %>">
+  <div data-controller="like" data-liked="<%= current_user&.liked?(@product) %>" data-id="<%= @product.id %>">
     <%= link_to '喜歡', '#', class: 'ink-btn', data: {
       action: 'like#toggle',
       like_target: 'btn'

@@ -22,6 +22,10 @@ class User < ApplicationRecord
     product_ids.include?(p.id)
   end
 
+  def liked?(p)
+    liked_product_ids.include?(p.id)
+  end
+
   private
 
   def encrypt_password

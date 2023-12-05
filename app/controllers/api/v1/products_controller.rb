@@ -3,8 +3,13 @@ class Api::V1::ProductsController < ApplicationController
   before_action :authenticate_user!
 
   def like
-    # ....多對多...
-    render json: {id: params[:id], status: 'liked'}
+    if current_user.liked?(@product)
+      current_user.liked_products.destroy(@product)
+      render json: {id: params[:id], status: 'unliked'}
+    else
+      current_user.liked_products << @product
+      render json: {id: params[:id], status: 'liked'}
+    end
   end
 
   private
