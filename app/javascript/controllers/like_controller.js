@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { patch } from "@rails/request.js";
 
 const LIKE_LABEL = "收藏";
 const UNLIKE_LABEL = "取消";
@@ -16,35 +17,21 @@ export default class extends Controller {
     }
   }
 
-  toggle(e) {
+  async toggle(e) {
     e.preventDefault();
 
     const { id } = this.element.dataset;
-
-    const token = document.querySelector("meta[name='csrf-token']").content;
-
-    // 打 API
     const url = `/api/v1/products/${id}/like`;
+    const response = await patch(url);
 
-    fetch(url, {
-      method: "PATCH",
-      headers: {
-        "X-CSRF-Token": token,
-      },
-    })
-      .then((result) => {
-        return result.json();
-      })
-      .then(({ status }) => {
-        // 變更按鈕字樣
-        if (status == "liked") {
-          this.btnTarget.textContent = UNLIKE_LABEL;
-        } else {
-          this.btnTarget.textContent = LIKE_LABEL;
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (response.ok) {
+      const { status } = await response.json;
+
+      if (status == "liked") {
+        this.btnTarget.textContent = UNLIKE_LABEL;
+      } else {
+        this.btnTarget.textContent = LIKE_LABEL;
+      }
+    }
   }
 }
