@@ -18,6 +18,9 @@
     } %>
   </div>
 </h1>
+
+<%= image_tag @product.cover.variant(:cover) if @product.cover.attached?%>
+
 <h3>售價：<%= @product.price %>元</h3>
 <p><%= simple_format(@product.description) %></p>
 

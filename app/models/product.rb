@@ -1,6 +1,13 @@
 class Product < ApplicationRecord
   acts_as_paranoid
 
+  has_one_attached :cover
+
+  has_one_attached :cover do |f|
+    f.variant :cover, resize_to_limit: [1000, 1000]
+    f.variant :thumb, resize_to_limit: [400, 400]
+  end
+
   belongs_to :user
   has_many :comments, -> { order(id: :desc) }
 

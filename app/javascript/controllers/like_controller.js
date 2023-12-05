@@ -32,6 +32,9 @@ export default class extends Controller {
       } else {
         this.btnTarget.textContent = LIKE_LABEL;
       }
+    } else {
+      const { url } = await response.json;
+      window.location.href = url;
     }
   }
 }

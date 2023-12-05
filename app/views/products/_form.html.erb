@@ -12,6 +12,11 @@
               data: { turbo: false } do |form| %>
 
   <div>
+    <%= form.label :cover %>
+    <%= form.file_field :cover, class: 'input-field' %>
+  </div>
+
+  <div>
     <%= form.label :title %>
     <%= form.text_field :title, class: 'input-field' %>
   </div>
