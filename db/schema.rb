@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_28_072335) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_05_032443) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.datetime "deleted_at"
@@ -21,6 +21,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_072335) do
     t.index ["deleted_at"], name: "index_comments_on_deleted_at"
     t.index ["product_id"], name: "index_comments_on_product_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "like_products", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
+    t.index ["product_id"], name: "index_like_products_on_product_id"
+    t.index ["user_id"], name: "index_like_products_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -46,4 +53,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_072335) do
 
   add_foreign_key "comments", "products"
   add_foreign_key "comments", "users"
+  add_foreign_key "like_products", "products"
+  add_foreign_key "like_products", "users"
 end
