@@ -1,9 +1,17 @@
 class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
-  helper_method :current_user, :user_signed_in?
+  helper_method :current_user, :user_signed_in?, :current_cart
 
   private
+
+  def current_cart
+    if user_signed_in?
+      @__cart__ ||= (current_user.cart || current_user.create_cart)
+    else
+      Cart.new
+    end
+  end
 
   def current_user
     # memorization
