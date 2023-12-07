@@ -1,7 +1,8 @@
 <% [:notice, :alert].each do |type| %>
   <% if flash[type] %>
-    <div class="flash-<%= type %>">
+    <div data-controller="flash" class="flash-<%= type %> flex items-center justify-between">
       <%= flash[type] %>
+      <button data-action="flash#close" class="px-2 py-1 bg-white rounded">X</button>
     </div>
   <% end %>
 <% end %>
