@@ -15,7 +15,6 @@ class User < ApplicationRecord
     email = data[:email]
     password = Digest::SHA256.hexdigest("*xx#{data[:password]}yy-")
 
-    # find_by(email: email, password: password)
     find_by(email:, password:)
   end
 
