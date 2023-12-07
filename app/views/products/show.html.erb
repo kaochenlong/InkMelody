@@ -25,7 +25,7 @@
       </div>
 
       <div data-controller="like" data-liked="<%= current_user&.liked?(@product) %>" data-id="<%= @product.id %>">
-        <%= link_to '喜歡', '#', class: 'ink-btn w-full', data: {
+        <%= link_to '收藏', '#', class: 'ink-btn w-full', data: {
           action: 'like#toggle',
           like_target: 'btn'
         } %>
