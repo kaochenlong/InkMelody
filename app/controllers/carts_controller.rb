@@ -5,6 +5,9 @@ class CartsController < ApplicationController
   def show
   end
 
+  def checkout
+  end
+
   def create
     # 加入購物車
     item = CartItem.new(product: @product, quantity: params[:quantity])
@@ -12,6 +15,11 @@ class CartsController < ApplicationController
 
     # 轉商品頁
     redirect_to @product, notice: '成功加入購物車'
+  end
+
+  def destroy
+    current_cart.destroy
+    redirect_to root_path, notice: '購物車已清空'
   end
 
   private

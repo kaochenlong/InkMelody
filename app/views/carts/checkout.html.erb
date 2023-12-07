@@ -1,0 +1,25 @@
+<h1 class="text-2xl">結帳 <span class="font-bold text-red-600">金額 <%= current_cart.total_amount %></span></h1>
+
+<section class="grid">
+  <% current_cart.cart_items.each do |item| %>
+    <div class="flex border border-slate-400">
+      <figure class="w-32">
+        <%= product_cover(item.product) %>
+      </figure>
+
+      <div class="flex justify-between w-full gap-6 p-2">
+        <h3 class="text-xl font-bold">
+          <%= item.product.title %>
+        </h3>
+
+        <div class="flex gap-3">
+          <div><%= item.quantity %></div>
+
+          <div>
+            NT$ <%= item.product.price.to_i%>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>
