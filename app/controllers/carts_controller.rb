@@ -2,6 +2,9 @@ class CartsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_product, only: [:create]
 
+  def show
+  end
+
   def create
     # 加入購物車
     item = CartItem.new(product: @product, quantity: params[:quantity])

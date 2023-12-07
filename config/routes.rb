@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :cart, only: [:show, :create, :update, :destroy]
+  resource :cart, only: [:show, :create, :destroy]
+  resources :cart_items, only: [:destroy]
 
   resource :users, except: [:destroy] do
     collection do

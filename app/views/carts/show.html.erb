@@ -1,0 +1,38 @@
+<h1 class="text-2xl">購物車</h1>
+
+<section class="grid grid-cols-3">
+  <div class="col-span-2">
+  <% current_cart.cart_items.each do |item| %>
+    <div class="flex border border-slate-400">
+      <figure class="w-32">
+        <%= product_cover(item.product) %>
+      </figure>
+
+      <div class="flex justify-between w-full gap-6 p-2">
+        <h3 class="text-xl font-bold">
+          <%= item.product.title %>
+        </h3>
+
+        <div class="flex gap-3">
+          <div><%= item.quantity %></div>
+
+          <div>
+            NT$ <%= item.product.price.to_i%>
+          </div>
+          <div>
+            <%= link_to cart_item_path(item), data: { turbo_method: 'delete' } do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <aside class="col-span-1 p-2">
+    <h2 class="text-xl">摘要</h2>
+    <ul>
+      <li>總計：<%= current_cart.total_amount %></li>
+    </ul>
+  </aside>
+</section>

@@ -11,8 +11,13 @@
   </div>
   <div>
     <ul class="flex gap-3">
-      <li>
-        <i class="fa-solid fa-cart-shopping fa-lg"></i>
+      <li class="relative mr-4">
+        <%= link_to cart_path do %>
+          <i class="fa-solid fa-cart-shopping fa-xl"></i>
+          <% if current_cart.count > 0 %>
+            <span class="absolute inline-block w-5 h-5 text-xs text-center bg-pink-400 rounded-full -top-1 -right-3"><%= current_cart.count %></span>
+          <% end %>
+        <% end %>
       </li>
 
       <% if user_signed_in? %>
