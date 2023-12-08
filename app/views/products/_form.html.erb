@@ -13,22 +13,22 @@
 
   <div>
     <%= form.label :cover %>
-    <%= form.file_field :cover, class: 'input-field' %>
+    <%= form.file_field :cover, class: 'file-input file-input-bordered' %>
   </div>
 
   <div>
     <%= form.label :title %>
-    <%= form.text_field :title, class: 'input-field' %>
+    <%= form.text_field :title, class: 'input input-bordered' %>
   </div>
 
   <div>
     <%= form.label :description %>
-    <%= form.text_area :description, class: 'input-field' %>
+    <%= form.text_area :description, class: 'textarea textarea-bordered' %>
   </div>
 
   <div>
     <%= form.label :price %>
-    <%= form.number_field :price, class: 'input-field', min: 0 %>
+    <%= form.number_field :price, class: 'input input-bordered', min: 0 %>
   </div>
 
   <div>
@@ -37,7 +37,7 @@
   </div>
 
   <div>
-    <%= form.submit class: 'bg-rose-700 text-white px-3 py-2' %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 
 <% end %>

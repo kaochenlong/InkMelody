@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :orders, only: [:create]
+
   resources :cart_items, only: [:destroy]
 
   resource :users, except: [:destroy] do

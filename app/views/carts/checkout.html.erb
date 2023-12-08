@@ -23,3 +23,10 @@
     </div>
   <% end %>
 </section>
+
+<section>
+  <%= form_with model: @order do |form| %>
+    <%= form.label :recipient, '收件人' %>
+    <%= form.text_field :recipient, class: 'border border-slate-500' %>
+  <% end %>
+</section>

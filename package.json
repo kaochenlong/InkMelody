@@ -14,5 +14,8 @@
     "autoprefixer": "latest",
     "postcss": "latest",
     "tailwindcss": "latest"
+  },
+  "devDependencies": {
+    "daisyui": "^4.4.19"
   }
 }
