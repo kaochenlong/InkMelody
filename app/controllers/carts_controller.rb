@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  include Braintreeable
+
   before_action :authenticate_user!
   before_action :find_product, only: [:create]
 
@@ -7,9 +9,7 @@ class CartsController < ApplicationController
 
   def checkout
     @order = Order.new
-
-    # token
-    @token = gateway.client_token.generate
+    @token = braintree_gateway.client_token.generate
   end
 
   def create
@@ -30,14 +30,5 @@ class CartsController < ApplicationController
 
   def find_product
     @product = Product.find(params[:id])
-  end
-
-  def gateway
-    Braintree::Gateway.new(
-      :environment => :sandbox,
-      :merchant_id => '',
-      :public_key => '',
-      :private_key => '',
-    )
   end
 end
