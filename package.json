@@ -12,6 +12,7 @@
     "@hotwired/turbo-rails": "^7.3.0",
     "@rails/request.js": "^0.0.9",
     "autoprefixer": "latest",
+    "braintree-web-drop-in": "^1.41.0",
     "postcss": "latest",
     "tailwindcss": "latest"
   },

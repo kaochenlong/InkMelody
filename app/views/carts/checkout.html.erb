@@ -24,9 +24,21 @@
   <% end %>
 </section>
 
-<section>
-  <%= form_with model: @order do |form| %>
-    <%= form.label :recipient, '收件人' %>
-    <%= form.text_field :recipient, class: 'border border-slate-500' %>
+<section class="mt-4">
+  <%= form_with model: @order, class: 'flex flex-col gap-2' do |form| %>
+    <div>
+      <%= form.label :recipient, '收件人', class: 'label' %>
+      <%= form.text_field :recipient, class: 'input w-full input-bordered' %>
+    </div>
+    <div>
+      <%= form.label :address, '地址', class: 'label' %>
+      <%= form.text_field :address, class: 'input w-full input-bordered' %>
+    </div>
+    <div>
+      <%= form.label :tel, '電話', class: 'label' %>
+      <%= form.text_field :tel, class: 'input w-full input-bordered' %>
+    </div>
+
+    <div data-controller="braintree" data-token="<%= @token %>"></div>
   <% end %>
 </section>

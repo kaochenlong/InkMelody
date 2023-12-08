@@ -74,3 +74,5 @@ gem "paranoia", "~> 2.6"
 gem "faker", "~> 3.2"
 
 gem "image_processing", "~> 1.12"
+
+gem "braintree", "~> 4.16.0"
