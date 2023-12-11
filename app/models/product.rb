@@ -17,4 +17,14 @@ class Product < ApplicationRecord
 
   validates :title, presence: true
   validates :price, numericality: { greater_than: 0 }
+
+  default_scope { where(onsale: true) }
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["description", "onsale", "price", "title"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
 end

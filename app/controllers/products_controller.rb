@@ -16,11 +16,15 @@ class ProductsController < ApplicationController
   end
 
   def my
-    @products = current_user.products.page(params[:page]).per(8)
+    @products = current_user.products
+                            .unscope(:where)
+                            .page(params[:page])
+                            .per(8)
   end
 
   def search
-    @products = Product.where("title LIKE ? OR description LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
+    data = Product.ransack(title_or_description_cont: params[:q])
+    @products = data.result
   end
 
   def new
