@@ -4,7 +4,10 @@ class ProductsController < ApplicationController
   before_action :find_owned_product, only: [:edit, :update, :destroy]
 
   def index
-    @products = Product.includes(:user).order(id: :desc)
+    @products = Product.includes(:user)
+                       .order(id: :desc)
+                       .page(params[:page])
+                       .per(8)
   end
 
   def show
@@ -13,7 +16,7 @@ class ProductsController < ApplicationController
   end
 
   def my
-    @products = current_user.products
+    @products = current_user.products.page(params[:page]).per(8)
   end
 
   def new
