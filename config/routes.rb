@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   resources :products do
+    collection do
+      get :my
+    end
+
     resources :comments, shallow: true, only: [:create, :destroy]
   end
 

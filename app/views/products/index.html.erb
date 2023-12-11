@@ -1,6 +1,9 @@
 <h1 class="mb-4 text-2xl">商品列表</h1>
 
-<%= link_to '新增商品', new_product_path, class: 'btn btn-primary mb-4' if user_signed_in? %>
+<% if user_signed_in? %>
+  <%= link_to '新增商品', new_product_path, class: 'btn btn-primary mb-4' %>
+  <%= link_to '我的商品', my_products_path, class: 'btn btn-primary mb-4' %>
+<% end %>
 
 <ul class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
   <%= render @products %>

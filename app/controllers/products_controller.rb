@@ -12,6 +12,10 @@ class ProductsController < ApplicationController
     @comments = @product.comments
   end
 
+  def my
+    @products = current_user.products
+  end
+
   def new
     @product = Product.new
   end
