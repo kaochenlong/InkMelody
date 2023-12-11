@@ -71,3 +71,5 @@ gem "braintree", "~> 4.16.0"
 
 
 gem "aasm", "~> 5.5"
+
+gem "acts_as_list", "~> 1.1"

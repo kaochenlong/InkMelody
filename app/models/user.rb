@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation: true
 
   has_one :cart
-  has_many :products
+  has_many :products, -> { order(position: :asc) }
   has_many :comments
   has_many :orders
 

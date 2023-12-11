@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   acts_as_paranoid
+  acts_as_list scope: :user
 
   has_one_attached :cover
 

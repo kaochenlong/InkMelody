@@ -77,6 +77,8 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    acts_as_list (1.1.0)
+      activerecord (>= 4.2)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     base64 (0.2.0)
@@ -269,6 +271,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm (~> 5.5)
+  acts_as_list (~> 1.1)
   bootsnap
   braintree (~> 4.16.0)
   capybara

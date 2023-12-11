@@ -11,12 +11,7 @@ export default class extends Controller {
         const { id } = e.item.dataset;
         const { newIndex } = e;
         const url = `/api/v1/products/${id}/sort`;
-        const data = { newIndex };
-        const result = await patch(url, { body: JSON.stringify(data) });
-        // console.log(result);
-
-        // PATCH /api/v1/products/:id/sort
-        // console.log(e.newIndex);
+        await patch(url, { body: JSON.stringify({ newIndex }) });
       },
     });
   }
