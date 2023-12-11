@@ -1,60 +1,63 @@
 <% if user_signed_in? and current_user.own?(@product) %>
-  <%= link_to '編輯', edit_product_path(@product), class: 'ink-btn' %>
+  <section class="mb-4">
+    <%= link_to '編輯', edit_product_path(@product), class: 'btn btn-primary' %>
 
-  <%= link_to '刪除', product_path(@product), class: 'ink-btn ink-btn-danger', data: {
-     turbo_method: 'delete',
-     turbo_confirm: '確認刪除？'
-   } %>
+    <%= link_to '刪除', product_path(@product), class: 'btn btn-error', data: {
+       turbo_method: 'delete',
+       turbo_confirm: '確認刪除？'
+     } %>
+  </section>
 <% end %>
 
 <section class="grid grid-cols-1 gap-3 sm:grid-cols-3">
-  <div class="col-span-2">
-    <%= image_tag @product.cover.variant(:cover) if @product.cover.attached?%>
-  </div>
+  <section class="flex flex-col col-span-2 gap-2">
+    <div>
+      <%= image_tag @product.cover.variant(:cover) if @product.cover.attached?%>
+    </div>
+
+    <%= simple_format(@product.description, class: 'bg-slate-300 my-1 py-2 px-3') %>
+
+    <section>
+      <h3 class="text-xl font-bold label">留言</h3>
+
+      <%= form_with(model: [@product, @comment],
+                    data: { turbo: false }) do |form| %>
+        <%= form.text_area :content, class: 'textarea textarea-bordered w-full' %>
+
+        <div class="text-right">
+          <%= form.submit '新增留言', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+
+      <ul>
+      <% @comments.each do |comment| %>
+        <li class="px-1 py-2 my-2 text-lg border-b border-slate-200"><%= comment.content %></li>
+      <% end %>
+      </ul>
+    </section>
+  </section>
 
   <div class="col-span-1">
     <%= form_with url: cart_path,
                   data: { turbo: false },
                   class: 'flex flex-col gap-3' do |form| %>
       <%= form.hidden_field :id, value: @product.id %>
-      <h2 class="text-2xl"><%= @product.title %></h2>
-      <h3>售價：<%= @product.price %>元</h3>
+      <h2 class="text-3xl font-bold"><%= @product.title %></h2>
+      <h3 class="text-lg">售價：<%= @product.price %>元</h3>
 
       <div>
-        <%= form.select :quantity, (1..10).to_a, {}, class: 'text-lg border border-slate-500 p-2' %>
+        <%= form.select :quantity, (1..10).to_a, {}, class: 'select select-bordered w-full' %>
       </div>
 
       <div data-controller="like" data-liked="<%= current_user&.liked?(@product) %>" data-id="<%= @product.id %>">
-        <%= link_to '收藏', '#', class: 'ink-btn w-full', data: {
+        <%= link_to '收藏', '#', class: 'btn btn-primary w-full', data: {
           action: 'like#toggle',
           like_target: 'btn'
         } %>
       </div>
       <div>
-        <%= form.submit '加入購物車', class: 'ink-btn w-full' %>
+        <%= form.submit '加入購物車', class: 'btn btn-info w-full' %>
       </div>
     <% end %>
   </div>
-
-</section>
-
-<p><%= simple_format(@product.description) %></p>
-
-<section>
-  <h3 class="text-xl">留言</h3>
-
-  <%= form_with(model: [@product, @comment],
-                data: { turbo: false }) do |form| %>
-    <%= form.text_area :content, class: 'input-field' %>
-
-    <div>
-      <%= form.submit '新增留言', class: 'ink-btn' %>
-    </div>
-  <% end %>
-
-  <ul>
-  <% @comments.each do |comment| %>
-    <li><%= comment.content %></li>
-  <% end %>
-  </ul>
 </section>

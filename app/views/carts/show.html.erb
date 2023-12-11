@@ -28,13 +28,13 @@
       </div>
     </div>
   <% end %>
-    <%= link_to '清空購物車', cart_path, class: 'ink-btn mt-2', data: { turbo_method: 'delete' } %>
+    <%= link_to '清空購物車', cart_path, class: 'btn btn-primary mt-2', data: { turbo_method: 'delete' } %>
   </div>
   <aside class="col-span-1 p-2">
     <h2 class="text-xl">摘要</h2>
     <ul>
       <li>總計：<%= current_cart.total_amount %></li>
     </ul>
-    <%= link_to '結帳', checkout_cart_path, class: 'ink-btn' %>
+    <%= link_to '結帳', checkout_cart_path, class: 'btn btn-primary' %>
   </aside>
 </section>

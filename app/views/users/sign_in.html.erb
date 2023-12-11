@@ -4,17 +4,19 @@
               scope: 'user',
               data: {turbo: false}) do |form| %>
 
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email, class: 'input-field' %>
-  </div>
+  <section class="flex flex-col gap-1">
+    <div>
+      <%= form.label :email, class: 'label' %>
+      <%= form.email_field :email, class: 'input input-bordered' %>
+    </div>
 
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, class: 'input-field' %>
-  </div>
+    <div>
+      <%= form.label :password, class: 'label' %>
+      <%= form.password_field :password, class: 'input input-bordered' %>
+    </div>
 
-  <div>
-    <%= form.submit '登入', class: 'ink-btn' %>
-  </div>
+    <div class="my-1">
+      <%= form.submit '登入', class: 'btn btn-primary' %>
+    </div>
+  </section>
 <% end %>

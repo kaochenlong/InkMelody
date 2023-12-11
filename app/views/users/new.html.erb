@@ -1,23 +1,24 @@
 <h1 class="text-2xl">註冊帳號</h1>
 
 <%= form_with model: @user, data: { turbo: false } do |form| %>
+  <section class="flex flex-col gap-1">
+    <div>
+      <%= form.label :email, class: 'label' %>
+      <%= form.email_field :email, class: 'input input-bordered' %>
+    </div>
 
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email, class: 'input-field' %>
-  </div>
+    <div>
+      <%= form.label :password, class: 'label' %>
+      <%= form.password_field :password, class: 'input input-bordered' %>
+    </div>
 
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, class: 'input-field' %>
-  </div>
+    <div>
+      <%= form.label :password_confirmation, class: 'label' %>
+      <%= form.password_field :password_confirmation, class: 'input input-bordered' %>
+    </div>
 
-  <div>
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, class: 'input-field' %>
-  </div>
-
-  <div>
-    <%= form.submit class: 'ink-btn' %>
-  </div>
+    <div>
+      <%= form.submit class: 'btn btn-primary my-1' %>
+    </div>
+  </section>
 <% end %>

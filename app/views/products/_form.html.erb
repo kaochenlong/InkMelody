@@ -11,33 +11,34 @@
 <%= form_with model: product,
               data: { turbo: false } do |form| %>
 
-  <div>
-    <%= form.label :cover %>
-    <%= form.file_field :cover, class: 'file-input file-input-bordered' %>
-  </div>
+  <section class="flex flex-col gap-1">
+    <div>
+      <%= form.label :cover, class: 'label' %>
+      <%= form.file_field :cover, class: 'file-input file-input-bordered' %>
+    </div>
 
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title, class: 'input input-bordered' %>
-  </div>
+    <div>
+      <%= form.label :title, class: 'label' %>
+      <%= form.text_field :title, class: 'input input-bordered' %>
+    </div>
 
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description, class: 'textarea textarea-bordered' %>
-  </div>
+    <div>
+      <%= form.label :description, class: 'label' %>
+      <%= form.text_area :description, class: 'textarea textarea-bordered' %>
+    </div>
 
-  <div>
-    <%= form.label :price %>
-    <%= form.number_field :price, class: 'input input-bordered', min: 0 %>
-  </div>
+    <div>
+      <%= form.label :price, class: 'label' %>
+      <%= form.number_field :price, class: 'input input-bordered', min: 0 %>
+    </div>
 
-  <div>
-    <%= form.label :onsale %>
-    <%= form.check_box :onsale, class: 'input-field', min: 0 %>
-  </div>
+    <div>
+      <%= form.label :onsale, class: 'label' %>
+      <%= form.check_box :onsale, class: 'checkbox' %>
+    </div>
 
-  <div>
-    <%= form.submit class: 'btn btn-primary' %>
-  </div>
-
+    <div class="my-1">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  </section>
 <% end %>
