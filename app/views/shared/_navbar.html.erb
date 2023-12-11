@@ -1,13 +1,23 @@
 <nav
-  class="flex items-center justify-between px-3 py-2 text-white bg-slate-800"
+  class="flex items-center justify-between px-3 py-2 bg-slate-200"
 >
   <div class="flex items-center gap-2">
-    <h1 class="text-2xl font-bold"><%= link_to "墨韻坊",root_path %></h1>
-    <ul class="flex gap-3">
-      <li><%= link_to "商品列表", products_path %></li>
-      <li><%= link_to "關於", about_path %></li>
-      <li><%= link_to "隱私權", privacy_path %></li>
-    </ul>
+    <h1 class="mx-2 text-4xl font-bold"><%= link_to "墨韻坊",root_path %></h1>
+
+    <section class="flex flex-col gap-1">
+      <div>
+        <form action="/search" data-turbo="false">
+          <input type="search" value="<%= params[:q] %>" name="q" class="text-black input input-bordered">
+          <button class="btn btn-success">搜尋</button>
+        </form>
+      </div>
+      <ul class="flex gap-3 text-xl">
+        <li><%= link_to "商品列表", products_path %></li>
+        <li><%= link_to "關於", about_path %></li>
+        <li><%= link_to "隱私權", privacy_path %></li>
+      </ul>
+    </section>
+
   </div>
   <div>
     <ul class="flex gap-3">

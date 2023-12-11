@@ -19,6 +19,10 @@ class ProductsController < ApplicationController
     @products = current_user.products.page(params[:page]).per(8)
   end
 
+  def search
+    @products = Product.where("title LIKE ? OR description LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
+  end
+
   def new
     @product = Product.new
   end

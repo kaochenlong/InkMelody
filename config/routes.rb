@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :comments, shallow: true, only: [:create, :destroy]
   end
 
+  get "/search", to: "products#search"
+
   namespace :api do
     namespace :v1 do
       resources :products, only: [] do
