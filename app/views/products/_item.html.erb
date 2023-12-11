@@ -1,4 +1,5 @@
-<li data-id="<%= product.id %>" class="p-2 bg-white border rounded shadow border-slate-300">
+<%= tag.li data: { id: product.id },
+           class: class_names('p-2 bg-white border rounded shadow border-slate-300', grayscale: !product.onsale, 'grayscale-0': product.onsale) do %>
   <div>
     <%= link_to edit_product_path(product) do %>
       <figure>
@@ -8,4 +9,4 @@
     <h2 class="font-bold"><%= link_to product.title, product_path(product) %></h2>
     <span>NT$ <%= product.price %></span>
   </div>
-</li>
+<% end %>
