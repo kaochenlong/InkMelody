@@ -2,6 +2,7 @@
 
 <%= link_to '新增商品', new_product_path, class: 'btn btn-primary mb-4' %>
 
-<ul class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+<ul data-controller="drag"
+    class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
   <%= render partial: 'item', collection: @products, as: :product %>
 </ul>

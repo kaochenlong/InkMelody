@@ -7,6 +7,9 @@ import { application } from "./application"
 import BraintreeController from "./braintree_controller"
 application.register("braintree", BraintreeController)
 
+import DragController from "./drag_controller"
+application.register("drag", DragController)
+
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :products, only: [] do
         member do
           patch :like
+          patch :sort
         end
       end
     end
