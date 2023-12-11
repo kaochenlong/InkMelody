@@ -3,10 +3,10 @@ class CommentsController < ApplicationController
 
   def create
     product = Product.find(params[:product_id])
-    comment = product.comments.new(comment_params)
+    @comment = product.comments.new(comment_params)
 
-    if comment.save
-      redirect_to product_path(product), notice: '新增留言成功'
+    if @comment.save
+      # redirect_to product_path(product), notice: '新增留言成功'
     else
       redirect_to product_path(product), alert: '留言發生錯誤'
     end

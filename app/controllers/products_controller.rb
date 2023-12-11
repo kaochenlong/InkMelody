@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
     @product = current_user.products.new(product_params)
 
     if @product.save
-      redirect_to root_path, notice: '新增商品成功!!'
+      redirect_to my_products_path, notice: '新增商品成功!!'
     else
       render :new
     end
