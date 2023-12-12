@@ -1,0 +1,13 @@
+tw:
+  navbar:
+    products: 商品列表
+    about: 關於
+    privacy: 隱私權
+
+  helpers:
+    submit:
+      product:
+        create: 新增商品
+        update: 更新商品
+      comment:
+        create: 新增留言
