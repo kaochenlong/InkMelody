@@ -6,7 +6,7 @@
 
     <section class="flex flex-col gap-1">
       <div>
-        <form action="/search" data-turbo="false">
+        <form action="<%= search_path %>" data-turbo="false">
           <input type="search" value="<%= params[:q] %>" name="q" class="text-black input input-bordered">
           <button class="btn btn-success">搜尋</button>
         </form>

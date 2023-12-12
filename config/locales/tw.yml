@@ -3,6 +3,9 @@ tw:
     products: 商品列表
     about: 關於
     privacy: 隱私權
+  page:
+    privacy:
+      title: 隱私權政策
 
   helpers:
     submit:

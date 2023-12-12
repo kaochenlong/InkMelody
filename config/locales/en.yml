@@ -1,2 +1,9 @@
 en:
-  hello: "Hello world"
+  navbar:
+    products: Products
+    about: About
+    privacy: Privacy
+
+  page:
+    privacy:
+      title: Privacy

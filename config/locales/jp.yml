@@ -3,3 +3,7 @@ jp:
     products: 製品リスト
     about: 約
     privacy: プライバシー
+
+  page:
+    privacy:
+      title: プライバシー

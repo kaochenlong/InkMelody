@@ -1,0 +1,10 @@
+<footer class="flex flex-col items-center justify-center text-lg">
+  <ul class="flex gap-2">
+    <li><%= link_to 'English', url_for(lang: :en) %></li>
+    <li><%= link_to '中文', url_for(lang: :tw) %></li>
+    <li><%= link_to '日文', url_for(lang: :jp) %></li>
+  </ul>
+  <div>
+    <%= Time.current.year %>&copy; 墨韻坊
+  </div>
+</footer>
