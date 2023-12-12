@@ -36,6 +36,15 @@
       <%= form.check_box :onsale, class: 'checkbox' %>
     </div>
 
+    <div>
+      <%= form.label :publish_date, class: 'label' %>
+      <%= form.text_field :publish_date,
+                          data: {
+                            controller: 'datepicker',
+                          },
+                          class: 'input input-bordered' %>
+    </div>
+
     <div class="my-1">
       <%= form.submit class: 'btn btn-primary' %>
     </div>

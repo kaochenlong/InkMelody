@@ -7,6 +7,9 @@ import { application } from "./application"
 import BraintreeController from "./braintree_controller"
 application.register("braintree", BraintreeController)
 
+import DatepickerController from "./datepicker_controller"
+application.register("datepicker", DatepickerController)
+
 import DragController from "./drag_controller"
 application.register("drag", DragController)
 
