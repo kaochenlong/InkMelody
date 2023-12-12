@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
       session[:__user_ticket__] = user.id
 
       # 寄通知信
-      UserMailer.login_notify(user).deliver_later
+      # UserMailer.login_notify(user).deliver_later
+      UserLoginNotifyJob.perform_later("kitty")
 
       redirect_to root_path, notice: '登入成功'
     else
