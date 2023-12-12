@@ -4,6 +4,10 @@ class SessionsController < ApplicationController
 
     if user
       session[:__user_ticket__] = user.id
+
+      # 寄通知信
+      UserMailer.login_notify(user).deliver_later
+
       redirect_to root_path, notice: '登入成功'
     else
       redirect_to sign_in_users_path, alert: '登入失敗'
