@@ -4,6 +4,11 @@ class Product < ApplicationRecord
 
   has_one_attached :cover
 
+  after_update_commit {
+    broadcast_replace_to 'hello', partial: 'products/item',
+                                  target: "product_item_#{self.id}"
+  }
+
   has_one_attached :cover do |f|
     f.variant :cover, resize_to_limit: [1000, 1000]
     f.variant :thumb, resize_to_limit: [400, 400]
