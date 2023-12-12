@@ -1,0 +1,41 @@
+<nav
+  class="flex items-center justify-between px-3 py-2 bg-slate-200"
+>
+  <div class="flex items-center gap-2">
+    <h1 class="mx-2 text-4xl font-bold"><%= link_to "墨韻坊",root_path %></h1>
+
+    <section class="flex flex-col gap-1">
+      <div>
+        <form action="<%= search_path %>" data-turbo="false">
+          <input type="search" value="<%= params[:q] %>" name="q" class="text-black input input-bordered">
+          <button class="btn btn-success">搜尋</button>
+        </form>
+      </div>
+      <ul class="flex gap-3 text-xl">
+        <li><%= link_to t('navbar.products'), products_path %></li>
+        <li><%= link_to t('navbar.privacy'), privacy_path %></li>
+      </ul>
+    </section>
+
+  </div>
+  <div>
+    <ul class="flex gap-3">
+      <li class="relative mr-4">
+        <%= link_to cart_path do %>
+          <i class="fa-solid fa-cart-shopping fa-xl"></i>
+          <% if current_cart.count > 0 %>
+            <span class="absolute inline-block w-5 h-5 text-xs text-center bg-pink-400 rounded-full -top-1 -right-3"><%= current_cart.count %></span>
+          <% end %>
+        <% end %>
+      </li>
+
+      <% if user_signed_in? %>
+        <li><%= current_user.email %></li>
+        <li><%= link_to '登出', sessions_path, data: { turbo_method: 'delete' } %></li>
+      <% else %>
+        <li><%= link_to '註冊', new_users_path %></li>
+        <li><%= link_to '登入', sign_in_users_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
