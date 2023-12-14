@@ -20,7 +20,7 @@ class User < ApplicationRecord
   end
 
   def own?(p)
-    product_ids.include?(p.id)
+    products.unscope(where: :onsale).include?(p)
   end
 
   def liked?(p)

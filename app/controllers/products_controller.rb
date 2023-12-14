@@ -4,6 +4,8 @@ class ProductsController < ApplicationController
   before_action :find_owned_product, only: [:edit, :update, :destroy]
 
   def index
+    authorize :product
+
     @products = Product.includes(:user)
                        .order(id: :desc)
                        .page(params[:page])
@@ -11,11 +13,15 @@ class ProductsController < ApplicationController
   end
 
   def show
+    authorize @product
+
     @comment = Comment.new
     @comments = @product.comments
   end
 
   def my
+    authorize :product
+
     @products = current_user.products
                             .unscope(where: :onsale)
                             .page(params[:page])
@@ -23,16 +29,22 @@ class ProductsController < ApplicationController
   end
 
   def search
+    authorize :product
+
     data = Product.ransack(title_or_description_cont: params[:q])
     @products = data.result
   end
 
   def new
     @product = Product.new
+
+    authorize @product
   end
 
   def create
     @product = current_user.products.new(product_params)
+
+    authorize @product
 
     if @product.save
       redirect_to my_products_path, notice: '新增商品成功!!'
@@ -77,9 +89,5 @@ class ProductsController < ApplicationController
   def find_owned_product
     @product = Product.unscope(where: :onsale)
                       .find(params[:id])
-
-    # @product = current_user.products
-    #                        .unscope(where: :onsale)
-    #                        .find(params[:id])
   end
 end
