@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
+  include Pundit::Authorization
+
   around_action :switch_locale
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorized
 
   helper_method :current_user, :user_signed_in?, :current_cart
 
@@ -54,5 +57,9 @@ class ApplicationController < ActionController::Base
     render file: Rails.public_path.join('404.html'),
            status: 404,
            layout: false
+  end
+
+  def not_authorized
+    redirect_to root_path, alert: '權限不足'
   end
 end

@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
 
   def my
     @products = current_user.products
-                            .unscope(:where)
+                            .unscope(where: :onsale)
                             .page(params[:page])
                             .per(8)
   end
@@ -42,9 +42,12 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    authorize @product
   end
 
   def update
+    authorize @product
+
     if @product.update(product_params)
       redirect_to my_products_path, notice: '更新成功'
     else
@@ -53,6 +56,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    authorize @product
+
     @product.destroy
     redirect_to root_path, alert: '商品已刪除'
   end
@@ -70,6 +75,11 @@ class ProductsController < ApplicationController
   end
 
   def find_owned_product
-    @product = current_user.products.unscope(:where).find(params[:id])
+    @product = Product.unscope(where: :onsale)
+                      .find(params[:id])
+
+    # @product = current_user.products
+    #                        .unscope(where: :onsale)
+    #                        .find(params[:id])
   end
 end

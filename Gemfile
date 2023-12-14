@@ -78,3 +78,5 @@ gem "acts_as_list", "~> 1.1"
 gem "kaminari", "~> 1.2"
 
 gem "ransack", "~> 4.1"
+
+gem "pundit", "~> 2.3"

@@ -5,6 +5,8 @@ class CommentsController < ApplicationController
     product = Product.find(params[:product_id])
     @comment = product.comments.new(comment_params)
 
+    authorize @comment
+
     if @comment.save
       # redirect_to product_path(product), notice: '新增留言成功'
     else
