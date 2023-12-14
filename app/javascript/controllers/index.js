@@ -21,3 +21,6 @@ application.register("hello", HelloController)
 
 import LikeController from "./like_controller"
 application.register("like", LikeController)
+
+import QrcodeController from "./qrcode_controller"
+application.register("qrcode", QrcodeController)

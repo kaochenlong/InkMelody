@@ -35,6 +35,8 @@
   </section>
 
   <div class="col-span-1">
+    <%= qrcode product_url(@product) %>
+
     <%= form_with url: cart_path,
                   data: { turbo: false },
                   class: 'flex flex-col gap-3' do |form| %>
