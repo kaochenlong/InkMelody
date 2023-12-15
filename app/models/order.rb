@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Order < ApplicationRecord
   include AASM
 
@@ -27,7 +29,7 @@ class Order < ApplicationRecord
     end
 
     event :cancel do
-      transitions from: [:pending, :paid], to: :cancelled
+      transitions from: %i[pending paid], to: :cancelled
     end
   end
 
@@ -37,12 +39,12 @@ class Order < ApplicationRecord
     self.serial = serial_generator
   end
 
-  def serial_generator(n = 6)
+  def serial_generator(digits = 6)
     now = Time.current
     year = now.year
-    month = "%02d" % now.month
-    day = "%02d" % now.day
-    code = SecureRandom.alphanumeric.upcase[0..n - 1]
+    month = format('%02d', now.month)
+    day = format('%02d', now.day)
+    code = SecureRandom.alphanumeric.upcase[0..digits - 1]
 
     "IM#{year}#{month}#{day}#{code}"
   end

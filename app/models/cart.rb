@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Cart < ApplicationRecord
   belongs_to :user
   has_many :cart_items, dependent: :destroy
@@ -11,13 +13,13 @@ class Cart < ApplicationRecord
     end.to_i
   end
 
-  def add!(t)
-    found_item = cart_items.find { |item| item.product == t.product }
+  def add!(item)
+    found_item = cart_items.find { |i| i.product == item.product }
 
     if found_item
-      found_item.increment!(:quantity, t.quantity)
+      found_item.increment!(:quantity, item.quantity)
     else
-      cart_items << t
+      cart_items << item
     end
   end
 end

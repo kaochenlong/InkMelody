@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProductPolicy < ApplicationPolicy
   def index?
     true
@@ -20,7 +22,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def update?
-    user && user.own?(record)
+    user&.own?(record)
   end
 
   def destroy?

@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 class CartsController < ApplicationController
   include Braintreeable
 
   before_action :authenticate_user!
   before_action :find_product, only: [:create]
 
-  def show
-  end
+  def show; end
 
   def checkout
     @order = Order.new

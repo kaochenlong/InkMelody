@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   def create
     user = User.login(params[:user])
@@ -7,7 +9,7 @@ class SessionsController < ApplicationController
 
       # 寄通知信
       # UserMailer.login_notify(user).deliver_later
-      UserLoginNotifyJob.perform_later("kitty")
+      UserLoginNotifyJob.perform_later('kitty')
 
       redirect_to root_path, notice: '登入成功'
     else

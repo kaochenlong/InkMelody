@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, confirmation: true
@@ -19,18 +21,18 @@ class User < ApplicationRecord
     find_by(email:, password:)
   end
 
-  def own?(p)
-    products.unscope(where: :onsale).include?(p)
+  def own?(prod)
+    products.unscope(where: :onsale).include?(prod)
   end
 
-  def liked?(p)
-    liked_product_ids.include?(p.id)
+  def liked?(prod)
+    liked_product_ids.include?(prod.id)
   end
 
   private
 
   def encrypt_password
-    salted_password = "*xx#{self.password}yy-"
+    salted_password = "*xx#{password}yy-"
     self.password = Digest::SHA256.hexdigest(salted_password)
   end
 end

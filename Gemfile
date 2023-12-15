@@ -1,36 +1,38 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-ruby "3.2.2"
+source 'https://rubygems.org'
+
+ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.2"
+gem 'rails', '~> 7.1.2'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+gem 'sprockets-rails'
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+gem 'sqlite3', '~> 1.4'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", ">= 5.0"
+gem 'puma', '>= 5.0'
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
-gem "jsbundling-rails"
+gem 'jsbundling-rails'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem 'turbo-rails'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
+gem 'stimulus-rails'
 
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem "cssbundling-rails"
+gem 'cssbundling-rails'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", ">= 4.0.1"
+gem 'redis', '>= 4.0.1'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -39,44 +41,45 @@ gem "redis", ">= 4.0.1"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem 'tzinfo-data', platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+gem 'bootsnap', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri windows ]
-  gem "dotenv-rails", "~> 2.8"
+  gem 'debug', platforms: %i[mri windows]
+  gem 'dotenv-rails', '~> 2.8'
 end
 
 group :development do
-  gem "web-console"
-  gem "letter_opener", "~> 1.8"
+  gem 'letter_opener', '~> 1.8'
+  gem 'web-console'
 end
 
 group :test do
-  gem "capybara"
-  gem "selenium-webdriver"
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
-gem "paranoia", "~> 2.6"
+gem 'paranoia', '~> 2.6'
 
-gem "faker", "~> 3.2"
+gem 'faker', '~> 3.2'
 
-gem "image_processing", "~> 1.12"
+gem 'image_processing', '~> 1.12'
 
-gem "braintree", "~> 4.16.0"
+gem 'braintree', '~> 4.16.0'
 
+gem 'aasm', '~> 5.5'
 
-gem "aasm", "~> 5.5"
+gem 'acts_as_list', '~> 1.1'
 
-gem "acts_as_list", "~> 1.1"
+gem 'kaminari', '~> 1.2'
 
-gem "kaminari", "~> 1.2"
+gem 'ransack', '~> 4.1'
 
-gem "ransack", "~> 4.1"
+gem 'pundit', '~> 2.3'
 
-gem "pundit", "~> 2.3"
+gem 'rubocop', '~> 1.59', require: false

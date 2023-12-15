@@ -1,11 +1,10 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
-
   around_action :switch_locale
-
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from Pundit::NotAuthorizedError, with: :not_authorized
-
   helper_method :current_user, :user_signed_in?, :current_cart
 
   private
@@ -14,14 +13,14 @@ class ApplicationController < ActionController::Base
     { lang: I18n.locale }
   end
 
-  def switch_locale(&action)
+  def switch_locale(&)
     lang = params[:lang] || I18n.default_locale
-    I18n.with_locale(lang, &action)
+    I18n.with_locale(lang, &)
   end
 
   def current_cart
     if user_signed_in?
-      @__cart__ ||= (current_user.cart || current_user.create_cart)
+      @__cart__ ||= current_user.cart || current_user.create_cart
     else
       Cart.new
     end
@@ -29,7 +28,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     # memorization
-    @__user__ ||= User.find_by(id: session[:__user_ticket__])
+    @current_user ||= User.find_by(id: session[:__user_ticket__])
   end
 
   def user_signed_in?
@@ -37,18 +36,15 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    if not user_signed_in?
-      respond_to do |format|
-        format.html {
-          redirect_to sign_in_users_path, alert: '請先登入帳號'
-        }
+    return if user_signed_in?
 
-        format.json {
-          render json: {
-            message: '請先登入帳號',
-            url: sign_in_users_path
-          }, status: 401
-        }
+    respond_to do |format|
+      format.html do
+        redirect_to sign_in_users_path, alert: '請先登入帳號'
+      end
+
+      format.json do
+        render json: { message: '請先登入帳號', url: sign_in_users_path }, status: 401
       end
     end
   end
